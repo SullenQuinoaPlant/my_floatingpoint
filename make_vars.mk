@@ -1,5 +1,5 @@
-NAME = ftprintf
-LIBNAME = libftprintf
+NAME = my_floatingpoint
+LIBNAME = libmy_floatingpoint
 
 CALL_DIR := $(shell pwd)
 SRC_DIR	:= $(ROOT)/sources
