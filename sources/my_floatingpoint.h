@@ -16,22 +16,49 @@ typedef struct	s_decomposed_floating_point {
 	uint64_t	mant;
 }				t_s_dfp;
 
-# define DB_MANT_LOG2_RESOLUTION 63
-# define LDB_MANT_LOG2_RESOLUTION 63
+/*can distinguist between numbers at 2 to the power exp
+**	minus :
+*/
+# define DB_MANT_BITS 52
+# define DB_EXP_BITS 11
+
+# define LDB_MANT_BITS 64
+# define LDB_EXP_BITS 15
+
+# define DB_MANT_RESOLUTION 53
+# define LDB_MANT_RESOLUTION 63
 
 # define DB_E_BIAS 1023
 # define LDB_E_BIAS 16383
 
-# define DB_MIN_POWER -1022
-# define DB_MAX_POWER 1023
-# define LDB_MIN_POWER -16382
-# define LDB_MAX_POWER -16383
+# define DB_MIN_EXP -1022
+# define DB_MIN_POWER DB_MIN_EXP - DB_MANT_RESOLUTION
+# define DB_MAX_EXP 1023
+# define DB_MAX_POWER DB_MAX_EXP - DB_MANT_RESOLUTION
+
+# define LDB_MIN_EXP -16382
+# define LDB_MIN_POWER LDB_MIN_EXP - LDB_MANT_RESOLUTION
+# define LDB_MAX_EXP 16383
+# define LDB_MAX_POWER LDB_MAX_EXP - LDB_MANT_RESOLUTION
 
 /*functions*/
 
+double
+	compose_inf(
+		char sign);
+
 long double
 	compose_ldouble(
-		char sign, uint64_t times, int32_t power);
+		char sign, uint64_t times, uint32_t power);
+
+double
+	compose_minf();
+
+double
+	compose_nan();
+
+double
+	compose_pinf();
 
 void
 	decompose_ldouble(
@@ -40,6 +67,14 @@ void
 void
 	decompose_double(
 		double const *p_val, t_s_dfp *p_ret);
+
+uint32_t
+	exp_bias_ld(
+		int32_t exp);
+
+int32_t
+	exp_unbias_ld(
+		uint32_t pow);
 
 int
 	is_dnorm(
@@ -56,5 +91,9 @@ int
 int
 	is_overf(
 		t_s_dfp *dbl);
+
+long double
+	make_ldouble(
+		char sign, uint64_t times, int32_t exp);
 
 #endif
