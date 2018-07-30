@@ -17,8 +17,8 @@ typedef union	u_ldouble {
 	char		ar[sizeof(long double)];
 	struct		{
 		uint64_t	mant : LDB_MANT_BITS;
-		uint32_t	exp : LDB_EXP_BITS;
-		uint32_t	sign : 1;
+		uint16_t	exp : LDB_EXP_BITS;
+		uint16_t	sign : 1;
 	};
 }				t_u_ld;
 # endif

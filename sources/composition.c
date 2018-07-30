@@ -11,7 +11,7 @@ double
 
 long double
 	compose_ldouble(
-		char sign, uint64_t times, uint32_t power)
+		char sign, uint64_t times, uint16_t power)
 {
 	t_u_ld	mapper;
 

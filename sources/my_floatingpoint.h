@@ -25,21 +25,21 @@ typedef struct	s_decomposed_floating_point {
 # define LDB_MANT_BITS 64
 # define LDB_EXP_BITS 15
 
-# define DB_MANT_RESOLUTION 53
-# define LDB_MANT_RESOLUTION 63
+# define DB_MANT_PRECISION 53
+# define LDB_MANT_PRECISION 63
 
 # define DB_E_BIAS 1023
 # define LDB_E_BIAS 16383
 
 # define DB_MIN_EXP -1022
-# define DB_MIN_POWER DB_MIN_EXP - DB_MANT_RESOLUTION
+# define DB_MIN_POW DB_MIN_EXP - DB_MANT_PRECISION
 # define DB_MAX_EXP 1023
-# define DB_MAX_POWER DB_MAX_EXP - DB_MANT_RESOLUTION
+# define DB_MAX_POW DB_MAX_EXP - DB_MANT_PRECISION
 
 # define LDB_MIN_EXP -16382
-# define LDB_MIN_POWER LDB_MIN_EXP - LDB_MANT_RESOLUTION
+# define LDB_MIN_POW LDB_MIN_EXP - LDB_MANT_PRECISION
 # define LDB_MAX_EXP 16383
-# define LDB_MAX_POWER LDB_MAX_EXP - LDB_MANT_RESOLUTION
+# define LDB_MAX_POW LDB_MAX_EXP - LDB_MANT_PRECISION
 
 /*functions*/
 
@@ -68,9 +68,9 @@ void
 	decompose_double(
 		double const *p_val, t_s_dfp *p_ret);
 
-uint32_t
-	exp_bias_ld(
-		int32_t exp);
+int32_t
+	exp_unbias_d(
+		uint16_t pow);
 
 int32_t
 	exp_unbias_ld(
@@ -95,5 +95,13 @@ int
 long double
 	make_ldouble(
 		char sign, uint64_t times, int32_t exp);
+
+uint16_t
+	trueexp_bias_d(
+		int32_t exp);
+
+uint16_t
+	trueexp_bias_ld(
+		int32_t exp);
 
 #endif
