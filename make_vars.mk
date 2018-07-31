@@ -18,7 +18,7 @@ ifndef ARCH
 endif
 CFLAGS_MORE =
 ifndef CFLAGS
-	CFLAGS := -Wall -Wextra -Werror
+	CFLAGS := -Wall -Wextra -Werror -D $(ARCH)
 endif
 CFLAGS += $(CFLAGS_MORE)
 
