@@ -2,7 +2,7 @@
 # define INNER_H
 
 # include "libft.h"
-# include "my_floatingpoint.h"
+# include "myfloatingpoint.h"
 # include "bit_patterns.h"
 
 #endif
