@@ -13,7 +13,7 @@ static int
 	align_exp(
 		uint64_t *times, int32_t *pow)
 {
-	uint64_t	const mask = (1 << LDB_MANT_PRECISION);
+	uint64_t	const mask = ((uint64_t)1 << LDB_MANT_PRECISION);
 
 	while (*pow > LDB_MIN_POW &&
 		!(*times & mask))

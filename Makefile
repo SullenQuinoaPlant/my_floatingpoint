@@ -53,14 +53,14 @@ clean-ft_printf :
 ################
 #MISCELLANEOUS :
 
-.PHONY : c
-c :
+.PHONY : gc
+gc :
 	git commit -a -m i
 
-.PHONY : p
-p :
-	git push
-
-.PHONY : cp
-cp :
+.PHONY : gcp
+gcp :
 	git commit -a -m i; git push;
+
+.PHONY : grm
+grm :
+	git reset --hard && make
