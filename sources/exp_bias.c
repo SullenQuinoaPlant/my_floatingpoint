@@ -2,7 +2,7 @@
 
 /*need not worry about overflows if exp is within bounds*/
 
-uint32_t
+uint16_t
 	trueexp_bias_d(
 		int32_t exp)
 {

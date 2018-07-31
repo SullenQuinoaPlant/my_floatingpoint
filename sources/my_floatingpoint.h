@@ -74,7 +74,7 @@ int32_t
 
 int32_t
 	exp_unbias_ld(
-		uint32_t pow);
+		uint16_t pow);
 
 int
 	is_dnorm(
