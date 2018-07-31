@@ -1,5 +1,5 @@
-NAME = my_floatingpoint
-LIBNAME = libmy_floatingpoint
+NAME = myfloatingpoint
+LIBNAME = libmyfloatingpoint
 
 CALL_DIR := $(shell pwd)
 SRC_DIR	:= $(ROOT)/sources
@@ -18,7 +18,7 @@ ifndef ARCH
 endif
 CFLAGS_MORE =
 ifndef CFLAGS
-	CFLAGS := -Wall -Wextra -Werror -D $(ARCH)
+	CFLAGS := -Wall -Wextra -Werror
 endif
 CFLAGS += $(CFLAGS_MORE)
 
