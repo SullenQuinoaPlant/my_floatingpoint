@@ -12,7 +12,7 @@ build_dir :
 libft.% : $(LIBS_I)/libft.h $(LIBS_L)/libft.a | build_dir
 	git clone \
 		--single-branch -b the_lib https://github.com/SullenQuinoaPlant/Libft.git $(BUILD_DIR)/ \
-		--shallow_submodules --depth 0
+		--depth 1
 	$(MAKE) -C $(BUILD_DIR)/ $@
 	cp $(BUILD_DIR)/libft.a $(LIBS_L)
 	cp $(BUILD_DIR)/libft.h $(LIBS_I)
