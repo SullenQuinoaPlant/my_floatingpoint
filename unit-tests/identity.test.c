@@ -63,7 +63,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 	T(identity3,
 		double	d = 7894564123.12345678;
 
-		assert_true(d == identity(d));
+		assert_true(d == identity_d(d));
 	)
 
 	T(identity4,
