@@ -4,9 +4,9 @@
 
 uint16_t
 	exp_bias_d(
-		int32_t exp)
+		int32_t pow)
 {
-	return ((uint32_t)(exp + DB_MANT_PRECISION + DB_E_BIAS));
+	return ((uint32_t)(pow + DB_MANT_PRECISION + DB_E_BIAS));
 }
 
 int32_t
@@ -22,9 +22,9 @@ int32_t
 
 uint16_t
 	exp_bias_ld(
-		int32_t exp)
+		int32_t pow)
 {
-	return ((uint16_t)(exp + LDB_MANT_PRECISION + LDB_E_BIAS));
+	return ((uint16_t)(pow + LDB_MANT_PRECISION + LDB_E_BIAS));
 }
 
 int32_t
