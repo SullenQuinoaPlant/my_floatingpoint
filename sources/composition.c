@@ -28,7 +28,7 @@ double
 
 	mapper.sign = 1;
 	mapper.exp = ~0;
-	mapper.mant = ((uint64_t)1 << (DB_MANT_BITS - 1));
+	mapper.mant = 0;
 	return (mapper.d);
 }
 
@@ -39,7 +39,7 @@ double
 
 	mapper.sign = 0;
 	mapper.exp = ~0;
-	mapper.mant = 0;
+	mapper.mant = ((uint64_t)1 << (DB_MANT_BITS - 1));
 	return (mapper.d);
 }
 
@@ -50,6 +50,6 @@ double
 
 	mapper.sign = 0;
 	mapper.exp = ~0;
-	mapper.mant = ((uint64_t)1 << (DB_MANT_BITS - 1));
+	mapper.mant = 0;
 	return (mapper.d);
 }
