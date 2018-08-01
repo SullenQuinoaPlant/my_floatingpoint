@@ -19,14 +19,13 @@ static int
 		*times <<= 1;
 		(*pow)--;
 	}
-	mask <<= 1;
 	while ((*pow < DB_MIN_POW && *times & ~mask) ||
 		(*pow >= DB_MIN_POW && *times & mask))
 	{
 		*times >>= 1;
 		(*pow)++;
 	}
-	*times &= mask;
+	*times &= ~mask;
 	return (!is_too_much(*pow));
 }
 
