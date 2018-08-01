@@ -22,7 +22,7 @@ static int
 		(*pow)--;
 	}
 	mask <<= 1;
-	while ((*pow < DB_MIN_POW && *times ||
+	while ((*pow < DB_MIN_POW && *times) ||
 		(*pow >= DB_MIN_POW && *times & mask))
 	{
 		*times >>= 1;
