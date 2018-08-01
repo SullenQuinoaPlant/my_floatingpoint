@@ -13,12 +13,13 @@ static int
 {
 	uint64_t	mask;
 
-	mask = ~((uint64_t)0) << DB_MANT_PRECISION;
+	mask = ~((uint64_t)0) << (DB_MANT_PRECISION + 1);
 	while (*pow > DB_MIN_POW && !(*times & mask))
 	{
 		*times <<= 1;
 		(*pow)--;
 	}
+	mask >>= 1;
 	while ((*pow < DB_MIN_POW && *times & ~mask) ||
 		(*pow >= DB_MIN_POW && *times & mask))
 	{
