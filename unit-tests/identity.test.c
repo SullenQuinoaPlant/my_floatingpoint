@@ -54,7 +54,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		t_s_dfp	dec;
 
 		d = identity_d(NAN);
-		dec = decompose_double(&d, &dec);
+		decompose_double(&d, &dec);
 		assert_true(is_nan(&dec));
 	)
 
@@ -82,11 +82,11 @@ int	declare_tests_and_run(int all_of, char *these[])
 		t_s_dfp		dec;
 
 		d = identity_ld(NAN);
-		dec = decompose_ldouble(&d, &dec);
+		decompose_ldouble(&d, &dec);
 		assert_true(is_nan(&dec));
 	)
 
-	T(identity4,
+	T(identity8,
 		long double	d;
 
 		d = INFINITY;
