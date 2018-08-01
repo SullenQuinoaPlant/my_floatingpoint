@@ -13,20 +13,21 @@ static int
 {
 	uint64_t	mask;
 
-	mask = ~((uint64_t)0) << (DB_MANT_PRECISION + 1);
+	mask = ~((uint64_t)0) << (DB_MANT_PRECISION);
 	while (*pow > DB_MIN_POW && !(*times & mask))
 	{
 		*times <<= 1;
 		(*pow)--;
 	}
-	mask >>= 1;
-	while ((*pow < DB_MIN_POW && *times & ~mask) ||
+	mask <<= 1;
+	while ((*pow < DB_MIN_POW && *times) ||
 		(*pow >= DB_MIN_POW && *times & mask))
 	{
 		*times >>= 1;
 		(*pow)++;
 	}
-	*times &= ~mask;
+	if (*pow < DB_MIN_POW)
+		*times = 0;
 	return (!is_too_much(*pow));
 }
 
