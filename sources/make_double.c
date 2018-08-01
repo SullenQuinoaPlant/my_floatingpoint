@@ -36,9 +36,15 @@ double
 		char s, uint64_t m, int32_t p)
 {
 	if (!m)
-		return (0.0);
-	else if (align_exp(&m, &p))
-		return (compose_double(s, m, exp_bias_d(p)));
+	{
+		if (p > DB_MAX_POW)
+			return (compose_inf(s));
+		else
+			return (0.0);
+	}
 	else
-		return (compose_inf(s));
+	{
+		align_exp(&m, &p);
+		return (compose_double(s, m, exp_bias_d(p)));
+	}
 }
