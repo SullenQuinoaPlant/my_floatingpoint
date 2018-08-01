@@ -11,12 +11,14 @@ double
 {
 	t_s_dfp	dec;
 	double	red;
+	t_s_dfp decred;
 
 	decompose_double(&d, &dec);
 	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
 			dec.exp);
+	decompose_double(&red, &decred);
 	return (red);
 }
 
@@ -27,18 +29,26 @@ long double
 {
 	t_s_dfp	dec;
 	long double	red;
+	t_s_dfp	dec red;
 
 	decompose_ldouble(&d, &dec);
 	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
 			dec.exp);
+	decompose_ldouble(&red, &decred);
 	return (red);
 }
 
 int	declare_tests_and_run(int all_of, char *these[])
 
 {
+	T(identity0,
+		long double	d = 123.123;
+
+		assert_true(d == identity_ld(d));
+	)
+
 	T(identity1,
 		double	d = 123.123;
 
