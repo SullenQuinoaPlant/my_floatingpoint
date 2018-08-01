@@ -70,11 +70,11 @@ void
 
 uint16_t
 	exp_bias_d(
-		int32_t exp);
+		int32_t pow);
 
 uint16_t
 	exp_bias_ld(
-		int32_t exp);
+		int32_t pow);
 
 int32_t
 	exp_unbias_d(
