@@ -9,7 +9,7 @@ double
 	mapper.sign = sign ? 1 : 0;
 	mapper.exp = bias_exp;
 	mapper.mant = mant;
-	return (mapper,d);
+	return (mapper.d);
 }
 
 double
