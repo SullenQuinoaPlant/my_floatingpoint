@@ -4,9 +4,7 @@ static int
 	is_too_much(
 		int32_t pow)
 {
-	if (!(pow <= DB_MAX_POW && pow >= DB_MIN_POW))
-		return (1);
-	return (0);
+	return (pow > DB_MAX_POW);
 }
 
 static int
@@ -22,12 +20,13 @@ static int
 		(*pow)--;
 	}
 	mask <<= 1;
-	while ((*pow < DB_MIN_POW && *times) ||
+	while ((*pow < DB_MIN_POW && *times & ~mask) ||
 		(*pow >= DB_MIN_POW && *times & mask))
 	{
 		*times >>= 1;
 		(*pow)++;
 	}
+	*times &= mask;
 	return (!is_too_much(*pow));
 }
 
