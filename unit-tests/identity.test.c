@@ -29,7 +29,7 @@ long double
 {
 	t_s_dfp	dec;
 	long double	red;
-	t_s_dfp	dec red;
+	t_s_dfp	decred;
 
 	decompose_ldouble(&d, &dec);
 	red = make_ldouble(
