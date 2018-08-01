@@ -17,7 +17,7 @@ double
 	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
-			dec.exp);
+			dec.exp - DB_MANT_BITS);
 	decompose_double(&red, &decred);
 	return (red);
 }
@@ -35,7 +35,7 @@ long double
 	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
-			dec.exp);
+			dec.exp - LDB_MANT_BITS);
 	decompose_ldouble(&red, &decred);
 	return (red);
 }
