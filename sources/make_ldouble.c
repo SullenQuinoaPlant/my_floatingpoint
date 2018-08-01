@@ -21,7 +21,7 @@ static int
 		*times <<= 1;
 		(*pow)--;
 	}
-	while (*pow < LDB_MIN_EXP && *times)
+	while (*pow < LDB_MIN_POW && *times)
 	{
 		*times >>= 1;
 		(*pow)++;

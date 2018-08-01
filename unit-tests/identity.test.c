@@ -14,7 +14,7 @@ double
 	t_s_dfp decred;
 
 	decompose_double(&d, &dec);
-	red = make_ldouble(
+	red = make_double(
 			dec.flags & SIGN_F,
 			dec.mant,
 			dec.exp - DB_MANT_PRECISION);
