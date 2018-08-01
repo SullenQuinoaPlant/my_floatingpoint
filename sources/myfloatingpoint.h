@@ -49,7 +49,7 @@ double
 
 long double
 	compose_ldouble(
-		char sign, uint64_t times, uint16_t power);
+		char sign, uint64_t times, uint16_t bias_exp);
 
 double
 	compose_minf();
@@ -67,6 +67,14 @@ void
 void
 	decompose_double(
 		double const *p_val, t_s_dfp *p_ret);
+
+uint16_t
+	exp_bias_d(
+		int32_t exp);
+
+uint16_t
+	exp_bias_ld(
+		int32_t exp);
 
 int32_t
 	exp_unbias_d(
@@ -95,13 +103,5 @@ int
 long double
 	make_ldouble(
 		char sign, uint64_t times, int32_t exp);
-
-uint16_t
-	trueexp_bias_d(
-		int32_t exp);
-
-uint16_t
-	trueexp_bias_ld(
-		int32_t exp);
 
 #endif

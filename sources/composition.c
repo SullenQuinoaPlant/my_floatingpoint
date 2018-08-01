@@ -11,12 +11,12 @@ double
 
 long double
 	compose_ldouble(
-		char sign, uint64_t times, uint16_t power)
+		char sign, uint64_t times, uint16_t bias_exp)
 {
 	t_u_ld	mapper;
 
 	mapper.sign = sign ? 1 : 0;
-	mapper.exp = power;
+	mapper.exp = bias_exp;
 	mapper.mant = times;
 	return (mapper.ld);
 }

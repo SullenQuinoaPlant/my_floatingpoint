@@ -34,7 +34,7 @@ long double
 		char s, uint64_t m, int32_t p)
 {
 	if (align_exp(&m, &p))
-		return (compose_ldouble(s, m, trueexp_bias_ld(p)));
+		return (compose_ldouble(s, m, exp_bias_ld(p)));
 	else
 		return (compose_inf(s));
 }
