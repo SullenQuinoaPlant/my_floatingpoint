@@ -17,7 +17,7 @@ double
 	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
-			dec.exp - LDB_MANT_PRECISION);
+			dec.exp - DB_MANT_PRECISION);
 	decompose_double(&red, &decred);
 	return (red);
 }
