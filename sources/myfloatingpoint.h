@@ -25,7 +25,7 @@ typedef struct	s_decomposed_floating_point {
 # define LDB_MANT_BITS 64
 # define LDB_EXP_BITS 15
 
-# define DB_MANT_PRECISION 53
+# define DB_MANT_PRECISION 52
 # define LDB_MANT_PRECISION 63
 
 # define DB_E_BIAS 1023
