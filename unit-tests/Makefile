@@ -65,7 +65,7 @@ cmocka :
 		-D $(ARCH)\
 		$<\
 		-L $(LIBS_L)\
-		-l$(NAME)\
+		-lftprintf\
 		-lcmocka -lft\
 		-lm\
 		-o $@\
