@@ -41,7 +41,6 @@ long double
 }
 
 int	declare_tests_and_run(int all_of, char *these[])
-
 {
 	T(identity0,
 		long double	d = 123.123;
