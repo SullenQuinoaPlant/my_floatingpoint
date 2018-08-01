@@ -16,7 +16,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(is_nan2,
-		long double	dnan = NAN;
+		long double	d = NAN;
 		t_s_dfp	dec;
 
 		decompose_ldouble(&d, &dec);
@@ -24,7 +24,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(is_nan3,
-		double	nan;
+		double	d;
 		t_s_dfp	dec;
 
 		nan = compose_nan();
@@ -33,8 +33,8 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(is_nan4,
-		long double	nan;
-		t_s_dfp	dec;
+		long double	d;
+		t_s_dfp		dec;
 
 		nan = compose_nan();
 		decompose_ldouble(&d, &dec);
