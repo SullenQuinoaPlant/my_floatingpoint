@@ -63,4 +63,4 @@ gcp :
 
 .PHONY : grm
 grm :
-	git reset --hard && make
+	git reset --hard && make CFLAGS_MORE=-g
