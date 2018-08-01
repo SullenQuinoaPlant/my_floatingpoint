@@ -38,7 +38,7 @@ double
 	if (!m)
 		return (0.0);
 	else if (align_exp(&m, &p))
-		return (compose_ldouble(s, m, exp_bias_ld(p)));
+		return (compose_double(s, m, exp_bias_ld(p)));
 	else
 		return (compose_inf(s));
 }

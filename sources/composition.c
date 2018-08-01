@@ -1,6 +1,18 @@
 #include "inner.h"
 
 double
+	compose_double(
+		char sign, uint64_t mant, uint16_t bias_exp)
+{
+	t_u_d	mapper;
+
+	mapper.sign = sign ? 1 : 0;
+	mapper.exp = bias_exp;
+	mapper.mant = mant;
+	return (mapper,d);
+}
+
+double
 	compose_inf(
 		char sign)
 {

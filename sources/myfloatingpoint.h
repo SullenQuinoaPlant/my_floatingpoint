@@ -44,6 +44,10 @@ typedef struct	s_decomposed_floating_point {
 /*functions*/
 
 double
+	compose_double(
+		char sign, uint64_t mant, uint16_t bias_exp);
+
+double
 	compose_inf(
 		char sign);
 
