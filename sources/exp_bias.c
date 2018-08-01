@@ -13,10 +13,11 @@ int32_t
 	exp_unbias_d(
 		uint16_t bias_exp)
 {
-	if (pow)
+	if (bias_exp)
 		return ((int32_t)bias_exp - DB_E_BIAS);
 	else
 		return (DB_MIN_EXP);
+	return (0);
 }
 
 uint16_t
