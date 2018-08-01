@@ -31,7 +31,7 @@ static int
 	return (!is_too_much(*pow));
 }
 
-long double
+double
 	make_double(
 		char s, uint64_t m, int32_t p)
 {
