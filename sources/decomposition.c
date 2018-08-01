@@ -34,7 +34,7 @@ void
 	*ret = (t_s_dfp){arg.sign, exp_unbias_ld(arg.exp), arg.mant};
 	if (arg.exp == (1 << LDB_EXP_BITS) - 1)
 	{
-		if (arg.mant & ~(1 << LDB_MANT_PRECISION))
+		if (arg.mant & ~((uint64_t)1 << LDB_MANT_PRECISION))
 			ret->flags |= NAN_F;
 		else
 			ret->flags |= INF_F;
