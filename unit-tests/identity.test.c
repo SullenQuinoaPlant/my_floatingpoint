@@ -2,7 +2,7 @@
 #include "cmocka/my_overlay.h"
 
 #include <math.h>
-#include "my_floatingpoint.h"
+#include "myfloatingpoint.h"
 
 static
 double
