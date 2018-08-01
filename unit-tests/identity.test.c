@@ -61,12 +61,9 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(identity3,
-		double	d;
-		t_s_dfp	dec;
+		double	d = 7894564123.12345678;
 
-		d = identity_d(NAN);
-		decompose_double(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(d == identity(d));
 	)
 
 	T(identity4,
@@ -89,12 +86,9 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(identity7,
-		long double	d;
-		t_s_dfp		dec;
+		long double	d = 999.45745678925330145674589;
 
-		d = identity_ld(NAN);
-		decompose_ldouble(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(d == identity_ld(d));
 	)
 
 	T(identity8,
