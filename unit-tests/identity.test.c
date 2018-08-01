@@ -13,11 +13,11 @@ double
 	double	red;
 
 	decompose_double(&d, &dec);
-	return (
-		make_ldouble(
+	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
-			dec.exp));
+			dec.exp);
+	return (red);
 }
 
 static
@@ -26,16 +26,18 @@ long double
 		long double d)
 {
 	t_s_dfp	dec;
+	long double	red;
 
 	decompose_ldouble(&d, &dec);
-	return (
-		make_ldouble(
+	red = make_ldouble(
 			dec.flags & SIGN_F,
 			dec.mant,
-			dec.exp));
+			dec.exp);
+	return (red);
 }
 
 int	declare_tests_and_run(int all_of, char *these[])
+
 {
 	T(identity1,
 		double	d = 123.123;
