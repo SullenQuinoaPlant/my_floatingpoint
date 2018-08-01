@@ -32,7 +32,7 @@ static int
 }
 
 long double
-	make_ldouble(
+	make_double(
 		char s, uint64_t m, int32_t p)
 {
 	if (!m)
