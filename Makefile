@@ -51,7 +51,7 @@ release :
 		-b release \
 		$(GIT_REPO) \
 		$(RELEASE_DIR)
-	cd $(RELEASE_DIR) && git rm *
+	cd $(RELEASE_DIR) && git rm -rf *
 	cp auteur $(RELEASE_DIR)/
 	cp -r $(SRC_DIR)/* $(RELEASE_DIR)/
 #the following must override the existing Makefile
