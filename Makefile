@@ -16,7 +16,7 @@ include $(ROOT)/make_vars.mk
 #######
 #CORE :
 
-include $(ROOT)/Makefile.mk
+include $(ROOT)/core.mk
 
 
 ##########
@@ -37,17 +37,19 @@ include $(UTEST_DIR)/Makefile
 
 
 #########
-#OUTPUT :
+#RELEASE :
 
-OUT = out_$(NAME)
+RELEAS_DIR = release_$(NAME)
 
-.PHONY : clean-ft_printf
-clean-ft_printf :
-	if ! [ -d $(OUT) ]; then mkdir $(OUT); fi
-	cp auteur $(OUT)/
-	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git $(OUT)/libft
-	cp Makefile.mk $(OUT)/Makefile
-	cp -r $(SRC_DIR)/ $(OUT)/
+.PHONY : release
+release :
+	if ! [ -d $(RELEASE_DIR) ];\
+	then mkdir $(RELEASE_DIR);\
+	else rm -rf $(RELEASE_DIR)/;\
+	fi
+	cp auteur $(RELEASE_DIR)/
+	cp Makefile.mk $(RELEASE_DIR)/Makefile
+	cp -r $(SRC_DIR)/ $(RELEASE_DIR)/
 
 
 ################
