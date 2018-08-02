@@ -39,7 +39,7 @@ include $(UTEST_DIR)/Makefile
 #########
 #RELEASE :
 
-RELEAS_DIR = release_$(NAME)
+RELEASE_DIR = release_$(NAME)
 
 .PHONY : release
 release :
