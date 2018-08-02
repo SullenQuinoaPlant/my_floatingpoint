@@ -53,7 +53,7 @@ release :
 		$(RELEASE_DIR)
 	cd $(RELEASE_DIR) && git rm *
 	cp auteur $(RELEASE_DIR)/
-	cp -r $(SRC_DIR)/ $(RELEASE_DIR)/
+	cp -r $(SRC_DIR)/* $(RELEASE_DIR)/
 #the following must override the existing Makefile
 	cp core.mk $(RELEASE_DIR)/Makefile
 	cp make_vars_release.mk $(RELEASE_DIR)/make_vars.mk
