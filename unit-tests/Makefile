@@ -43,22 +43,8 @@ cmocka :
 	fi
 	-@rm ./test.o
 
-%.test.o $(UTEST_DIR)/%.test.o : $(UTEST_DIR)/%.test.c $(SRC_DIR)/%.c
-	echo "$(LIBS_I)"
-	$(CC) $(CFLAGS_UTEST)\
-		-I $(LIBS_I) -I $(SRC_DIR)\
-		-D main=testee_main\
-		-D $(ARCH)\
-		-include $(SRC_DIR)/$*.c\
-		$<\
-		-L $(LIBS_L)\
-		-lcmocka -lft\
-		-lm\
-		-o $@\
-		-Wl,-rpath=$$(readlink -e $(LIBS_L))
 
 %.test.o : %.test.c $(LIBS_L)/$(LIBNAME).a
-	echo "yo"
 	$(CC) $(CFLAGS_UTEST)\
 		-I $(SRC_DIR)\
 		-I $(LIBS_I)\

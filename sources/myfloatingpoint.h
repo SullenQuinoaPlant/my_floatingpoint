@@ -88,21 +88,29 @@ int32_t
 	exp_unbias_ld(
 		uint16_t pow);
 
+long double
+	floorl(
+		long double d);
+
 int
 	is_dnorm(
-		t_s_dfp *dbl);
+		double dbl);
+
+int
+	is_finite(
+		double dbl);
 
 int
 	is_inf(
-		t_s_dfp *dbl);
+		double dbl);
 
 int
 	is_nan(
-		t_s_dfp *dbl);
+		double dbl);
 
 int
 	is_overf(
-		t_s_dfp *dbl);
+		double dbl);
 
 double
 	make_double(
@@ -110,6 +118,6 @@ double
 
 long double
 	make_ldouble(
-		char sign, uint64_t times, int32_t exp);
+		char sign, uint64_t times, int32_t pow);
 
 #endif
