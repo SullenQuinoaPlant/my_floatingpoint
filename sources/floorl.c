@@ -10,7 +10,10 @@ long double
 	decompose_ldouble(&d, &dec);
 	if ((pow = dec.exp - LDB_MANT_PRECISION) >= 0)
 		return (d);
-	dec.mant &= ~((uint64_t)0) << -pow;
+	else if (pow < -LDB_MANT_PRECISION)
+		dec.mant = 0;
+	else
+		dec.mant &= ~((uint64_t)0) << -pow;
 	if ((d = make_ldouble(d < 0, dec.mant, pow)) <= 0)
 		d -= 1;
 	return (d);
