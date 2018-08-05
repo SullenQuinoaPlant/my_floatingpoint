@@ -16,6 +16,11 @@ typedef struct	s_decomposed_floating_point {
 	uint64_t	mant;
 }				t_s_dfp;
 
+typedef struct	s_fp_and_dfp {
+	long double	dbl;
+	t_s_dfp		dec;
+}				t_s_fpndfp;
+
 /*can distinguist between numbers at 2 to the power exp
 **	minus :
 */
