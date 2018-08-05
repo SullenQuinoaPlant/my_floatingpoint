@@ -2,36 +2,50 @@
 
 int
 	is_nan(
-		t_s_dfp *dbl)
+		double dbl)
 {
-	if (dbl->flags & NAN_F)
+	if (dbl == compose_nan())
 		return (1);
 	return (0);
 }
 
 int
-	is_inf(
-		t_s_dfp *dbl)
+	is_finite(
+		double dbl)
 {
-	if (dbl->flags & INF_F)
+	return (!is_inf(dbl));
+}
+
+int
+	is_inf(
+		double dbl)
+{
+	if (dbl == compose_minf() ||
+		dbl == compose_pinf())
 		return (1);
 	return (0);
 }
 
 int
 	is_overf(
-		t_s_dfp *dbl)
+		double dbl)
 {
-	if (dbl->flags & OVER_F)
+	t_s_dfp	dec;
+
+	decompose_double(&dbl, &dec);
+	if (dec.flags & OVER_F)
 		return (1);
 	return (0);
 }
 
 int
 	is_dnorm(
-		t_s_dfp *dbl)
+		double dbl)
 {
-	if (dbl->flags & DNORM_F)
+	t_s_dfp	dec;
+
+	decompose_double(&dbl, &dec);
+	if (dec.flags & DNORM_F)
 		return (1);
 	return (0);
 }
