@@ -93,6 +93,10 @@ long double
 		long double d);
 
 int
+	has_nanf(
+		t_s_dfp *dec);
+
+int
 	is_dnorm(
 		double dbl);
 
