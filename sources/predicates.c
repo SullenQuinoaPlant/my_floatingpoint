@@ -33,7 +33,7 @@ int
 	t_s_dfp	dec;
 
 	decompose_double(&dbl, &dec);
-	if (dec->flags & OVER_F)
+	if (dec.flags & OVER_F)
 		return (1);
 	return (0);
 }
@@ -45,7 +45,7 @@ int
 	t_s_dfp	dec;
 
 	decompose_double(&dbl, &dec);
-	if (dec->flags & DNORM_F)
+	if (dec.flags & DNORM_F)
 		return (1);
 	return (0);
 }
