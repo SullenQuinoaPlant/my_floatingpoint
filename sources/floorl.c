@@ -14,7 +14,8 @@ long double
 		dec.mant = 0;
 	else
 		dec.mant &= ~((uint64_t)0) << -pow;
-	if ((d = make_ldouble(d < 0, dec.mant, pow)) <= 0)
+	d = make_ldouble(d < 0, dec.mant, pow);
+	if (dec.flags & SIGN_F)
 		d -= 1;
 	return (d);
 }
