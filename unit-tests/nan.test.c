@@ -12,7 +12,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		t_s_dfp	dec;
 
 		decompose_double(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(has_nanf(&dec));
 	)
 
 	T(is_nan2,
@@ -20,7 +20,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		t_s_dfp	dec;
 
 		decompose_ldouble(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(has_nanf(&dec));
 	)
 
 	T(is_nan3,
@@ -29,7 +29,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 
 		d = compose_nan();
 		decompose_double(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(has_nanf(&dec));
 	)
 
 	T(is_nan4,
@@ -38,7 +38,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 
 		d = compose_nan();
 		decompose_ldouble(&d, &dec);
-		assert_true(is_nan(&dec));
+		assert_true(has_nanf(&dec));
 	)
 
 	return(run_test_arr(all_of, these));
