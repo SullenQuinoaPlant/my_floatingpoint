@@ -4,6 +4,7 @@ ifndef ROOT
 endif
 
 all : $(OUT_DIR_LIB)/$(LIBNAME).a
+so : $(OUT_DIR_LIB)/$(LIBNAME).so
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
 
@@ -13,9 +14,15 @@ $(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS) #$(OBJ_DIR)/$(NAME).o
 	-ar rcs $@ $^
 	cp $(SRC_DIR)/$(NAME).h $(OUT_DIR_H)/$(LIBNAME).h
 
-##linking :
-#$(OBJ_DIR)/$(NAME).o : $(OBJS)
-#	ld -r $^ -o $@
+
+$(OUT_DIR_LIB)/$(LIBNAME).so : set_so_flags $(OBJS) #$(OBJ_DIR)/$(NAME).o
+	$(CC) $(CFLAGS) -shared $(OBJS) -o $@
+
+.PHONY : set_so_flags
+set_so_flags :
+	$(eval CFLAGS += -fPIC)
+
+
 
 #compilation :
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
