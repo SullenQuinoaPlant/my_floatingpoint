@@ -1,7 +1,7 @@
 #include "inner.h"
 
 long double
-	floorl(
+	my_floorl(
 		long double d)
 {
 	t_s_dfp		dec;

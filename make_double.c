@@ -33,9 +33,9 @@ static int
 
 double
 	make_double(
-		char s, uint64_t m, int32_t p)
+		char s, uint64_t times, int32_t p)
 {
-	if (!m)
+	if (!times)
 	{
 		if (p > DB_MAX_POW)
 			return (compose_inf(s));
@@ -44,7 +44,7 @@ double
 	}
 	else
 	{
-		align_exp(&m, &p);
-		return (compose_double(s, m, exp_bias_d(p)));
+		align_exp(&times, &p);
+		return (compose_double(s, times, exp_bias_d(p)));
 	}
 }
