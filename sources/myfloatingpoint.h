@@ -21,9 +21,6 @@ typedef struct	s_fp_and_dfp {
 	t_s_dfp		dec;
 }				t_s_fpndfp;
 
-/*can distinguist between numbers at 2 to the power exp
-**	minus :
-*/
 # define DB_MANT_BITS 52
 # define DB_EXP_BITS 11
 
@@ -47,7 +44,6 @@ typedef struct	s_fp_and_dfp {
 # define LDB_MAX_POW LDB_MAX_EXP - LDB_MANT_PRECISION
 
 /*functions*/
-
 double
 	compose_double(
 		char sign, uint64_t mant, uint16_t bias_exp);
@@ -94,7 +90,7 @@ int32_t
 		uint16_t pow);
 
 long double
-	floorl(
+	my_floorl(
 		long double d);
 
 int
@@ -123,7 +119,7 @@ int
 
 double
 	make_double(
-		char s, uint64_t m, int32_t p);
+		char s, uint64_t times, int32_t p);
 
 long double
 	make_ldouble(
