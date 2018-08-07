@@ -16,7 +16,7 @@ $(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS) #$(OBJ_DIR)/$(NAME).o
 
 
 $(OUT_DIR_LIB)/$(LIBNAME).so : set_so_flags $(OBJS) #$(OBJ_DIR)/$(NAME).o
-	$(CC) $(CFLAGS) -shared $(OBJS)
+	$(CC) $(CFLAGS) -shared $(OBJS) -o $@
 
 .PHONY : set_so_flags
 set_so_flags :
