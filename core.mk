@@ -9,13 +9,13 @@ OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
 
 
 #packaging :
-$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJ_DIR)/$(NAME).o
-	-ar rcs $@ $<
+$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS) #$(OBJ_DIR)/$(NAME).o
+	-ar rcs $@ $^
 	cp $(SRC_DIR)/$(NAME).h $(OUT_DIR_H)/$(LIBNAME).h
 
-#linking :
-$(OBJ_DIR)/$(NAME).o : $(OBJS)
-	ld -r $^ -o $@
+##linking :
+#$(OBJ_DIR)/$(NAME).o : $(OBJS)
+#	ld -r $^ -o $@
 
 #compilation :
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
