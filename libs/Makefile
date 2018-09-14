@@ -1,32 +1,24 @@
 ifndef ROOT
 	ROOT = ..
-	include $(ROOT)/make_vars.mk
+	include $(ROOT)/Makefile
 endif
 
-BUILD_DIR = winterwindswouldwindwistfullywhencewantonwhorshipperswailed
 
-build_dir :
-	if [ -d $(BUILD_DIR) ];then exit 1; fi
+.PHONY : libft
+libft : $(LIB_DIR)/libft
 
-
-libft.% : $(LIBS_I)/libft.h $(LIBS_L)/libft.a | build_dir
+$(LIB_DIR)/libft :
 	git clone \
-		--single-branch -b the_lib https://github.com/SullenQuinoaPlant/Libft.git $(BUILD_DIR)/ \
-		--depth 1
-	$(MAKE) -C $(BUILD_DIR)/ $@
-	cp $(BUILD_DIR)/libft.a $(LIBS_L)
-	cp $(BUILD_DIR)/libft.h $(LIBS_I)
-	rm -rf $(BUILD_DIR)
-	touch $(LIB_DIR)/libft
-
-$(LIBS_I)/libft.h :
-	@:
-
-$(LIBS_L)/libft.a :
-	@:
+		--single-branch \
+		-b release \
+		--depth 1 \
+		https://github.com/SullenQuinoaPlant/Libft.git $@
+	$(MAKE) -C $@/
+	cp $@/libft.a $(LIBS_L)
+	cp $@/includes/libft.h $(LIBS_I)
 
 .PHONY : clean-libft
 clean-libft :
-	-rm libft
+	-rm -rf libft
 	-rm $(LIBS_I)/libft.h
 	-rm $(LIBS_L)/libft.a

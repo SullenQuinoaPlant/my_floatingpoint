@@ -25,19 +25,13 @@ set_so_flags :
 
 
 #compilation :
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS)\
 		-I $(LIBS_I)\
 		-o $@ -c $<
 
-.PHONY : objdir
-objdir :
-	@if [ ! -d $(OBJ_DIR) ]; then\
-		mkdir $(OBJ_DIR);\
-	fi
 
-#specifc file dependencies:
-
+.PHONY : re fclean clean all
 clean :
 	-rm $(OBJS)
 	-rm $(OBJ_DIR)/$(NAME).o
@@ -47,5 +41,3 @@ fclean : clean
 	-rm $(OUT_DIR_H)/$(LIBNAME).h
 
 re : fclean all
-
-.PHONY : re fclean clean all
