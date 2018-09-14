@@ -3,26 +3,22 @@ ifndef ROOT
  include $(ROOT)/make_vars.mk
 endif
 
-all : $(OUT_DIR_LIB)/$(LIBNAME).a
-so : $(OUT_DIR_LIB)/$(LIBNAME).so
+all : $(OUT_DIR_LIB)/$(LIBNAME).a header
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
 
 
-#packaging :
-$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS) #$(OBJ_DIR)/$(NAME).o
+.PHONY : header
+header : $(OUT_DIR_H)/$(LIBNAME).h
+
+$(OUT_DIR_H)/$(LIBNAME).h : $(INC_DIR)/$(NAME).h 
+	sed \
+		-e '4s/\(myfloatingpoint\)/lib\1/' \
+		-e '13,14s/\(FLOATING\)/LIB\1/' \
+		$(INC_DIR)/$(NAME).h > $@
+
+$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS)
 	-ar rcs $@ $^
-	cp $(SRC_DIR)/$(NAME).h $(OUT_DIR_H)/$(LIBNAME).h
-
-
-$(OUT_DIR_LIB)/$(LIBNAME).so : set_so_flags $(OBJS) #$(OBJ_DIR)/$(NAME).o
-	$(CC) $(CFLAGS) -shared $(OBJS) -o $@
-
-.PHONY : set_so_flags
-set_so_flags :
-	$(eval CFLAGS += -fPIC)
-
-
 
 #compilation :
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
