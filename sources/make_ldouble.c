@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_ldouble.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/14 13:17:46 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/14 13:19:39 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-static int
-	is_too_much(
-		int32_t pow)
+static int							is_too_much(
+	int32_t pow)
 {
 	if (!(pow <= LDB_MAX_POW && pow >= LDB_MIN_POW))
 		return (1);
 	return (0);
 }
 
-static int
-	align_exp(
-		uint64_t *times, int32_t *pow)
+static int							align_exp(
+	uint64_t *times,
+	int32_t *pow)
 {
 	uint64_t	const mask = ((uint64_t)1 << LDB_MANT_PRECISION);
 
@@ -29,9 +40,10 @@ static int
 	return (!is_too_much(*pow));
 }
 
-long double
-	make_ldouble(
-		char s, uint64_t m, int32_t p)
+long double							make_ldouble(
+	char s,
+	uint64_t m,
+	int32_t p)
 {
 	if (!m)
 		return (0.0L);
