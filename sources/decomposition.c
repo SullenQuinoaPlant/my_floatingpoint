@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   decomposition.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/14 13:09:38 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/14 13:11:32 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
 #ifdef ARCH_A
-void
-	decompose_double(
-		double const *val, t_s_dfp *ret)
+void							decompose_double(
+	double const *val,
+	t_s_dfp *ret)
 {
 	t_u_d	arg;
-	
+
 	ft_memcpy(&arg, val, sizeof(*val));
 	*ret = (t_s_dfp){arg.sign, exp_unbias_d(arg.exp), arg.mant};
 	if (arg.exp == (1 << DB_EXP_BITS) - 1)
@@ -20,16 +32,18 @@ void
 		ret->mant |= 1ull << DB_MANT_BITS;
 }
 
-/*NOTES ON THE FOLLOWING:
-**	-gnu sets highest mant bit to one for long double
-**		infinity.
+/*
+**NOTE ON THE FOLLOWING:
+** -gnu sets highest mant bit to one for long double
+** infinity.
 */
-void
-	decompose_ldouble(
-		long double const *val, t_s_dfp *ret)
+
+void							decompose_ldouble(
+	long double const *val,
+	t_s_dfp *ret)
 {
 	t_u_ld	arg;
-	
+
 	ft_memcpy(&arg, val, sizeof(*val));
 	*ret = (t_s_dfp){arg.sign, exp_unbias_ld(arg.exp), arg.mant};
 	if (arg.exp == (1 << LDB_EXP_BITS) - 1)
