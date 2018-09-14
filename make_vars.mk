@@ -3,7 +3,8 @@ LIBNAME = libmyfloatingpoint
 GIT_REPO = https://github.com/SullenQuinoaPlant/my_floatingpoint.git
 
 CALL_DIR := $(shell pwd)
-SRC_DIR	:= $(ROOT)/sources
+SRC_DIR := $(ROOT)/sources
+INC_DIR := $(ROOT)/includes
 OBJ_DIR := $(ROOT)/objects
 LIB_DIR := $(ROOT)/libs
 LIBS_L := $(LIB_DIR)/objects
@@ -19,9 +20,11 @@ ifndef ARCH
 endif
 CFLAGS_MORE =
 ifndef CFLAGS
-	CFLAGS := -Wall -Wextra -Werror -D $(ARCH)
+	CFLAGS := -Wall -Wextra -Werror -D $(ARCH) -I $(INC_DIR)
 endif
 CFLAGS += $(CFLAGS_MORE)
+
+DEPENDENCIES = libft
 
 UTEST_DIR := $(ROOT)/unit-tests
 DEBUG_DIR := $(ROOT)/debug
