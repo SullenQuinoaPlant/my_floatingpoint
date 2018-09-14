@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_double.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/14 13:13:03 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/14 13:14:35 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-static int
-	is_too_much(
-		int32_t pow)
+static int						is_too_much(
+	int32_t pow)
 {
 	return (pow > DB_MAX_POW);
 }
 
-static int
-	align_exp(
-		uint64_t *times, int32_t *pow)
+static int						align_exp(
+	uint64_t *times,
+	int32_t *pow)
 {
 	uint64_t	mask;
 
@@ -31,9 +42,10 @@ static int
 	return (!is_too_much(*pow));
 }
 
-double
-	make_double(
-		char s, uint64_t times, int32_t p)
+double							make_double(
+		char s,
+		uint64_t times,
+		int32_t p)
 {
 	if (!times)
 	{
