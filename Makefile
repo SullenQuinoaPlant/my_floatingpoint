@@ -52,13 +52,16 @@ release :
 		$(GIT_REPO) \
 		$(RELEASE_DIR)
 	cd $(RELEASE_DIR) && git rm -rf *
-	cp auteur $(RELEASE_DIR)/
-	cp -r $(SRC_DIR)/* $(RELEASE_DIR)/
-#the following must override the existing Makefile
-	cp core.mk $(RELEASE_DIR)/Makefile
-	cp make_vars_release.mk $(RELEASE_DIR)/make_vars.mk
+	cp $(ROOT)/auteur $(RELEASE_DIR)/
+	mkdir $(RELEASE_DIR)/sources
+	cp $(SRC_DIR)/*.c $(RELEASE_DIR)/sources
+	mkdir $(RELEASE_DIR)/includes
+	cp $(INC_DIR)*.h $(RELEASE_DIR)/includes
 	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) \
-		$(RELEASE_DIR)/
+		$(RELEASE_DIR)/includes
+	cp $(ROOT)/core.mk $(RELEASE_DIR)/Makefile
+	cp $(ROOT)/torgets.mk $(RELEASE_DIR)/make_vars.mk
+	cat $(ROOT)/make_vars_release.mk >> $(RELEASE_DIR)/make_vars.mk
 	cd $(RELEASE_DIR) && \
 		git add * && \
 		git commit -m make_release && \
