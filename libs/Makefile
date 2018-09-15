@@ -3,6 +3,8 @@ ifndef ROOT
 	include $(ROOT)/Makefile
 endif
 
+.PHONY : build_dependencies
+build_dependencies : $(DEPENDENCIES)
 
 .PHONY : libft
 libft : $(LIB_DIR)/libft
