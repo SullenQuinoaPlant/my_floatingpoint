@@ -3,41 +3,28 @@ ifndef ROOT
  include $(ROOT)/make_vars.mk
 endif
 
-all : $(OUT_DIR_LIB)/$(LIBNAME).a
-so : $(OUT_DIR_LIB)/$(LIBNAME).so
+all : $(OUT_DIR_LIB)/$(LIBNAME).a header
 
-OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
+.PHONY : header
+header : $(OUT_DIR_H)/$(LIBNAME).h
 
+$(OUT_DIR_H)/$(LIBNAME).h : $(INC_DIR)/$(NAME).h 
+	sed \
+		-e '4s/\(myfloatingpoint\)/lib\1/' \
+		-e '13,14s/\(FLOATING\)/LIB\1/' \
+		$(INC_DIR)/$(NAME).h > $@
 
-#packaging :
-$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS) #$(OBJ_DIR)/$(NAME).o
+$(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS)
 	-ar rcs $@ $^
-	cp $(SRC_DIR)/$(NAME).h $(OUT_DIR_H)/$(LIBNAME).h
-
-
-$(OUT_DIR_LIB)/$(LIBNAME).so : set_so_flags $(OBJS) #$(OBJ_DIR)/$(NAME).o
-	$(CC) $(CFLAGS) -shared $(OBJS) -o $@
-
-.PHONY : set_so_flags
-set_so_flags :
-	$(eval CFLAGS += -fPIC)
-
-
 
 #compilation :
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS)\
 		-I $(LIBS_I)\
 		-o $@ -c $<
 
-.PHONY : objdir
-objdir :
-	@if [ ! -d $(OBJ_DIR) ]; then\
-		mkdir $(OBJ_DIR);\
-	fi
 
-#specifc file dependencies:
-
+.PHONY : re fclean clean all
 clean :
 	-rm $(OBJS)
 	-rm $(OBJ_DIR)/$(NAME).o
@@ -47,5 +34,3 @@ fclean : clean
 	-rm $(OUT_DIR_H)/$(LIBNAME).h
 
 re : fclean all
-
-.PHONY : re fclean clean all
