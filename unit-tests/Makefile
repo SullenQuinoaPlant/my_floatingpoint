@@ -29,7 +29,7 @@ cmocka :
 	@if $(CC) $(CFLAGS_UTEST)\
 		-I $(LIBS_I) -L $(LIBS_L)\
 	 	$(UTEST_DIR)/cmocka/check_install.c\
-		 -lcmocka -o test.o\
+		 -lcmocka_shared -o test.o\
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
 		&& ./test.o .;\
 	then\
@@ -38,13 +38,15 @@ cmocka :
 	else\
 		echo "installing cmocka";\
 		$(MAKE) -C $(UTEST_DIR)/cmocka/;\
-		mv $(UTEST_DIR)/cmocka/libcmocka* $(LIBS_L)/;\
+		-mv $(UTEST_DIR)/cmocka/libcmocka_shared.* \
+			$(LIBS_L)/;\
 		mv $(UTEST_DIR)/cmocka/cmocka.h $(LIBS_I)/;\
 		echo "cmocka installed";\
 	fi
 
 
-%.test.o : %.test.c $(LIBS_L)/$(LIBNAME).a
+$(UTEST_DIR)/%.test.o :\
+$(UTEST_DIR)/%.test.c $(LIBS_L)/$(LIBNAME).a
 	$(CC) $(CFLAGS_UTEST)\
 		-I $(SRC_DIR)\
 		-I $(LIBS_I)\
@@ -52,14 +54,10 @@ cmocka :
 		$<\
 		-L $(LIBS_L)\
 		-l$(NAME)\
-		-lcmocka -lft\
+		-lcmocka_shared -lft\
 		-lm\
 		-o $@\
-		-Wl,-rpath,$(LIBS_L)
-
-%.test.c : $(UTEST_DIR)/cmocka/my_macro_overlay.h
-	@:
-
+		-Wl,-rpath=$(LIBS_L)
 
 
 
