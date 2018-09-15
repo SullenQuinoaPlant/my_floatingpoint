@@ -5,9 +5,6 @@ endif
 
 all : $(OUT_DIR_LIB)/$(LIBNAME).a header
 
-OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
-
-
 .PHONY : header
 header : $(OUT_DIR_H)/$(LIBNAME).h
 

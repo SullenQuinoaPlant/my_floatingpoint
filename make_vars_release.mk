@@ -11,7 +11,7 @@ LIBS_I := $(LIB_DIR)/includes
 OUT_DIR_LIB := $(LIBS_L)
 OUT_DIR_H := $(LIBS_I)/includes
 
-include $(SRC_DIR)/targets.mk
+OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
 
 CC := gcc
 ifndef ARCH

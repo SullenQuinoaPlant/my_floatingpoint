@@ -6,13 +6,13 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 13:12:02 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/14 13:12:35 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/15 05:28:40 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inner.h"
 
-long doubl							my_floorl(
+long double							my_floorl(
 	long double d)
 {
 	t_s_dfp		dec;

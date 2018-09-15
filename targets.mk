@@ -1,5 +1,6 @@
 TARGETS := \
-	composition \
+	composition1 \
+	composition2 \
 	decomposition \
 	decomposition_predicates \
 	exp_bias \

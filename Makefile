@@ -56,11 +56,11 @@ release :
 	mkdir $(RELEASE_DIR)/sources
 	cp $(SRC_DIR)/*.c $(RELEASE_DIR)/sources
 	mkdir $(RELEASE_DIR)/includes
-	cp $(INC_DIR)*.h $(RELEASE_DIR)/includes
+	cp $(INC_DIR)/*.h $(RELEASE_DIR)/includes
 	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) \
 		$(RELEASE_DIR)/includes
 	cp $(ROOT)/core.mk $(RELEASE_DIR)/Makefile
-	cp $(ROOT)/torgets.mk $(RELEASE_DIR)/make_vars.mk
+	cp $(ROOT)/targets.mk $(RELEASE_DIR)/make_vars.mk
 	cat $(ROOT)/make_vars_release.mk >> $(RELEASE_DIR)/make_vars.mk
 	cd $(RELEASE_DIR) && \
 		git add * && \
