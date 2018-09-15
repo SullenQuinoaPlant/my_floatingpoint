@@ -8,5 +8,8 @@ install:
  - LIBS_L="$INSTALL_HERE""/objects"
  - . .travis/install_cmocka.sh
  - ls -R $INSTALL_HERE
+before_script:
+ - make build_dependencies
 script:
  - make
+ - make ut

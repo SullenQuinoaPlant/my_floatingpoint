@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 git clone https://github.com/clibs/cmocka.git cmocka_download
 mkdir -p cmocka_build
