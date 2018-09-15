@@ -33,6 +33,7 @@ cmocka :
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
 		&& ./test.o .;\
 	then\
+		@rm ./test.o;\
 		echo "cmocka already installed";\
 	else\
 		echo "installing cmocka";\
@@ -41,7 +42,6 @@ cmocka :
 		mv $(UTEST_DIR)/cmocka/cmocka.h $(LIBS_I)/;\
 		echo "cmocka installed";\
 	fi
-	-@rm ./test.o
 
 
 %.test.o : %.test.c $(LIBS_L)/$(LIBNAME).a
@@ -55,7 +55,7 @@ cmocka :
 		-lcmocka -lft\
 		-lm\
 		-o $@\
-		-Wl,-rpath=$$(readlink -e $(LIBS_L))
+		-Wl,-rpath,$(LIBS_L)
 
 %.test.c : $(UTEST_DIR)/cmocka/my_macro_overlay.h
 	@:
