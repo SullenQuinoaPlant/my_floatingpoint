@@ -10,8 +10,8 @@ header : $(OUT_DIR_H)/$(LIBNAME).h
 
 $(OUT_DIR_H)/$(LIBNAME).h : $(INC_DIR)/$(NAME).h 
 	sed \
-		-e '4s/\(myfloatingpoint\)/lib\1/' \
-		-e '13,14s/\(FLOATING\)/LIB\1/' \
+		-e '4s/\($(NAME)\.h\)   /lib\1/' \
+		-e '13,14s/\(MYFLOATING\)/LIB\1/' \
 		$(INC_DIR)/$(NAME).h > $@
 
 $(OUT_DIR_LIB)/$(LIBNAME).a : $(OBJS)

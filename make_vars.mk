@@ -1,6 +1,6 @@
 NAME = myfloatingpoint
 LIBNAME = libmyfloatingpoint
-GIT_REPO = https://github.com/SullenQuinoaPlant/my_floatingpoint.git
+GIT_REPO = git@github.com:/SullenQuinoaPlant/my_floatingpoint.git
 
 CALL_DIR := $(shell pwd)
 SRC_DIR := $(ROOT)/sources
