@@ -48,7 +48,7 @@ cmocka :
 $(UTEST_DIR)/%.test.o :\
 $(UTEST_DIR)/%.test.c $(LIBS_L)/$(LIBNAME).a
 	$(CC) $(CFLAGS_UTEST)\
-		-I $(SRC_DIR)\
+		-I $(SRC_DIR) -I $(INC_DIR)\
 		-I $(LIBS_I)\
 		-D $(ARCH)\
 		$<\

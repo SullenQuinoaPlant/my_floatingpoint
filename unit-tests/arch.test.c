@@ -2,7 +2,7 @@
 #include "cmocka/my_overlay.h"
 
 #include <math.h>
-#include "myfloatingpoint.h"
+#include "libmyfloatingpoint.h"
 #include "bit_patterns.h"
 
 int	declare_tests_and_run(int all_of, char *these[])
